@@ -1,5 +1,6 @@
 package messenger;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,10 +26,15 @@ public class ProcessesHandler {
         }
     }
 
-    static ProcessExecutor getProcess(String id) {
+    static ProcessExecutor getProcessExecutor(String id) {
         return processes.get(id);
     }
 
-    private ProcessesHandler() {}
+    static Collection<ProcessExecutor> getAllProcesses() {
+        return processes.values();
+    }
+
+    private ProcessesHandler() {
+    }
 
 }

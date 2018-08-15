@@ -34,7 +34,11 @@ class ProcessExecutor {
         while (canRun) {
             Message message = queue.poll();
             if (message != null) {
-                process.onMessage(message);
+                try {
+                    process.onMessage(message);
+                } catch (Exception e) {
+                    System.err.println(String.format("Error on processing message: \n%s\n%s", message, e));
+                }
             }
         }
     }
@@ -45,11 +49,13 @@ class ProcessExecutor {
         ProcessContext.clearCurrentProcess();
     }
 
-
     void kill() {
         queue.clear();
         canRun = false;
         runner = null;
     }
 
+    Process getProcess() {
+        return process;
+    }
 }

@@ -14,6 +14,14 @@ public final class Message {
     private Payload payload;
     private MessageType type;
 
+    public Message() {
+        this(new Payload());
+    }
+
+    public Message(Payload payload) {
+        this(null, payload);
+    }
+
     public Message(String targetProcessId, Payload payload) {
         this(MessageIdProvider.newId(), targetProcessId, new HashMap<>(), payload, MessageType.REQUEST);
     }
@@ -21,20 +29,22 @@ public final class Message {
     Message(int id, String targetProcessId, Map<String, Object> headers, Payload payload, MessageType type) {
         this.id = id;
         this.headers = headers;
-        setTargetProcessId(targetProcessId);
+        if (targetProcessId != null) {
+            setTargetProcessId(targetProcessId);
+        }
         this.payload = payload;
         this.type = type;
     }
 
-    String getTargetProcessId() {
+    public String getTargetProcessId() {
         return getHeader(TARGET_PROCESS_ID_KEY);
     }
 
-    String getSourceProcessId() {
+    public String getSourceProcessId() {
         return getHeader(SOURCE_PROCESS_ID_KEY);
     }
 
-    private void setTargetProcessId(String targetProcessId) {
+    void setTargetProcessId(String targetProcessId) {
         this.headers.put(TARGET_PROCESS_ID_KEY, targetProcessId);
     }
 
