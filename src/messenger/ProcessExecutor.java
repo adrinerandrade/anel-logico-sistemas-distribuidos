@@ -1,12 +1,12 @@
 package messenger;
 
-import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 class ProcessExecutor {
 
-    private final Queue<Message> queue = new LinkedList<>();
+    private final Queue<Message> queue = new ConcurrentLinkedQueue<>();
     private final Process process;
     private boolean canRun;
     private Thread runner;

@@ -6,17 +6,7 @@ public class Messenger {
 
     private static boolean log;
 
-    public static Messenger forMessage(Message message) {
-        return new Messenger(message);
-    }
-
-    private Message message;
-
-    private Messenger(Message message) {
-        this.message = message;
-    }
-
-    public void send() {
+    public static void send(Message message) {
         message.setSourceProcessId(ProcessContext.getCurrentProcess());
         ProcessExecutor process = ProcessesHandler.getProcessExecutor(message.getTargetProcessId());
         if (process != null) {
@@ -29,11 +19,11 @@ public class Messenger {
         }
     }
 
-    public void broadcast() {
+    public static void broadcast(Message message) {
         ProcessesHandler.getAllProcesses()
                 .stream()
                 .filter(process -> !process.getProcess().getId().equals(ProcessContext.getCurrentProcess()))
-                .map(process -> new Messenger(buildBroadcastMessage(message, process)))
+                .map(process -> buildBroadcastMessage(message, process))
                 .forEach(Messenger::send);
     }
 
@@ -50,5 +40,7 @@ public class Messenger {
     public static void log(boolean log) {
         Messenger.log = log;
     }
+
+    private Messenger() {}
 
 }

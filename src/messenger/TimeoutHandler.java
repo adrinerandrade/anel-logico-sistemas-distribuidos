@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class TimeoutHandler {
 
-    private static final int DEFAULT_TIMEOUT = 3000;
+    private static final int DEFAULT_TIMEOUT = 2000;
 
     private Map<Integer, Timeout> timeouts = new HashMap<>();
 
@@ -14,7 +14,10 @@ public class TimeoutHandler {
         Timeout timeout = new Timeout(DEFAULT_TIMEOUT);
         int messageId = message.getId();
         timeouts.put(messageId, timeout);
-        timeout.onTimeout(() -> timeouts.remove(messageId));
+        timeout.onTimeout(() -> {
+            System.err.println("Mensagem não respondida: " + message);
+            timeouts.remove(messageId);
+        });
         return timeout;
     }
 
