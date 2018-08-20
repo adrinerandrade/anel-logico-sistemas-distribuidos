@@ -37,7 +37,8 @@ class ProcessExecutor {
                 try {
                     process.onMessage(message);
                 } catch (Exception e) {
-                    System.err.println(String.format("Error on processing message: \n%s\n%s", message, e));
+                    System.err.println(String.format("Error on processing message: %s", message));
+                    e.printStackTrace();
                 }
             }
         }

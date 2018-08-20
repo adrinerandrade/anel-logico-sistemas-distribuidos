@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e9c9739-a5ac-4e92-b796-bfb535a6452d" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/ScenarioEventsDelay.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/service/CancelElectionMessage.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/service/CoordinatorActionMessage.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/service/CoordinatorMessage.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/service/ElectionMessage.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/service/ServiceKey.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/service/CurrentCoordinator.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/Anel Lógico/app/Main.class" afterPath="$PROJECT_DIR$/out/production/Anel Lógico/app/Main.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Anel Lógico/app/ScenarioEventsDelay.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Anel Lógico/messenger/Messenger.class" afterPath="$PROJECT_DIR$/out/production/Anel Lógico/messenger/Messenger.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Anel Lógico/messenger/ProcessExecutor.class" afterPath="$PROJECT_DIR$/out/production/Anel Lógico/messenger/ProcessExecutor.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Anel Lógico/service/Service$1.class" afterPath="$PROJECT_DIR$/out/production/Anel Lógico/service/Service$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Anel Lógico/service/Service.class" afterPath="$PROJECT_DIR$/out/production/Anel Lógico/service/Service.class" />
       <change beforePath="$PROJECT_DIR$/src/app/Main.java" afterPath="$PROJECT_DIR$/src/app/Main.java" />
+      <change beforePath="$PROJECT_DIR$/src/app/ScenarioEventsDelay.java" afterPath="$PROJECT_DIR$/src/app/ScenarioEventsPeriod.java" />
       <change beforePath="$PROJECT_DIR$/src/messenger/Messenger.java" afterPath="$PROJECT_DIR$/src/messenger/Messenger.java" />
       <change beforePath="$PROJECT_DIR$/src/messenger/ProcessExecutor.java" afterPath="$PROJECT_DIR$/src/messenger/ProcessExecutor.java" />
-      <change beforePath="$PROJECT_DIR$/src/messenger/TimeoutHandler.java" afterPath="$PROJECT_DIR$/src/messenger/TimeoutHandler.java" />
       <change beforePath="$PROJECT_DIR$/src/service/Service.java" afterPath="$PROJECT_DIR$/src/service/Service.java" />
-      <change beforePath="$PROJECT_DIR$/src/service/ServiceAction.java" afterPath="$PROJECT_DIR$/src/service/ServiceAction.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,34 +31,137 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+            <state relative-caret-position="276">
+              <caret line="42" column="83" lean-forward="false" selection-start-line="42" selection-start-column="83" selection-end-line="42" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1028#1157#0" expanded="true" />
+                <element signature="e#1156#1157#0" expanded="true" />
+                <element signature="e#2161#2162#0" expanded="true" />
+                <element signature="e#2222#2223#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Service.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ScenarioEventsPeriod.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/ScenarioEventsPeriod.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+              <folding>
+                <element signature="e#233#234#0" expanded="true" />
+                <element signature="e#269#270#0" expanded="true" />
+                <element signature="e#300#301#0" expanded="true" />
+                <element signature="e#329#330#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Service.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/service/Service.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="190" column="40" lean-forward="false" selection-start-line="190" selection-start-column="40" selection-end-line="190" selection-end-column="40" />
+            <state relative-caret-position="385">
+              <caret line="151" column="0" lean-forward="false" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#731#732#0" expanded="true" />
                 <element signature="e#756#757#0" expanded="true" />
-                <element signature="e#1869#1870#0" expanded="true" />
-                <element signature="e#1924#1925#0" expanded="true" />
-                <element signature="e#5311#5332#0" expanded="true" />
-                <element signature="e#5688#5689#0" expanded="true" />
-                <element signature="e#5724#5725#0" expanded="true" />
-                <element signature="e#7026#7027#0" expanded="true" />
-                <element signature="e#7081#7082#0" expanded="true" />
+                <element signature="e#1961#1962#0" expanded="true" />
+                <element signature="e#2016#2017#0" expanded="true" />
+                <element signature="e#5443#5464#0" expanded="true" />
+                <element signature="e#5820#5821#0" expanded="true" />
+                <element signature="e#5856#5857#0" expanded="true" />
+                <element signature="e#7613#7614#0" expanded="true" />
+                <element signature="e#7668#7669#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProcessContext.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/messenger/ProcessContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceAction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/service/ServiceAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoordinatorActionMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/service/CoordinatorActionMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#279#280#0" expanded="true" />
+                <element signature="e#341#342#0" expanded="true" />
+                <element signature="e#424#425#0" expanded="true" />
+                <element signature="e#487#488#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/messenger/Message.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProcessExecutor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/messenger/ProcessExecutor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Messenger.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/messenger/Messenger.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="31" />
+              <folding>
+                <element signature="e#732#733#0" expanded="true" />
+                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#1540#1541#0" expanded="true" />
+                <element signature="e#1575#1576#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CurrentCoordinator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/service/CurrentCoordinator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="e#389#390#0" expanded="true" />
+                <element signature="e#425#426#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,6 +181,10 @@
     <findStrings>
       <find>this.coordinator =</find>
       <find>system.</find>
+      <find>this.coordinator =</find>
+      <find>this.coordinator = id;</find>
+      <find>coordinator =</find>
+      <find>Error on processing message</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -91,9 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/messenger/ServicesContainer.java" />
-        <option value="$PROJECT_DIR$/src/messenger/Application.java" />
-        <option value="$PROJECT_DIR$/src/messenger/Service.java" />
         <option value="$PROJECT_DIR$/src/messenger/MessageConsumer.java" />
         <option value="$PROJECT_DIR$/src/messenger/ProcessesContainer.java" />
         <option value="$PROJECT_DIR$/src/messenger/MessageResponse.java" />
@@ -127,20 +231,23 @@
         <option value="$PROJECT_DIR$/src/service/NewProcessMessageHandler.java" />
         <option value="$PROJECT_DIR$/src/service/NewProcessMessage.java" />
         <option value="$PROJECT_DIR$/src/messenger/TimeoutsHandler.java" />
-        <option value="$PROJECT_DIR$/src/messenger/ProcessExecutor.java" />
         <option value="$PROJECT_DIR$/src/messenger/ProcessesHandler.java" />
-        <option value="$PROJECT_DIR$/src/messenger/Messenger.java" />
         <option value="$PROJECT_DIR$/src/messenger/Timeout.java" />
         <option value="$PROJECT_DIR$/src/app/ScenarioEvents.java" />
-        <option value="$PROJECT_DIR$/src/app/ScenarioEventsDelay.java" />
         <option value="$PROJECT_DIR$/src/messenger/TimeoutHandler.java" />
         <option value="$PROJECT_DIR$/src/service/CancelElectionMessage.java" />
         <option value="$PROJECT_DIR$/src/service/ElectionMessage.java" />
         <option value="$PROJECT_DIR$/src/service/CoordinatorActionMessage.java" />
         <option value="$PROJECT_DIR$/src/service/ServiceKey.java" />
-        <option value="$PROJECT_DIR$/src/service/ServiceAction.java" />
         <option value="$PROJECT_DIR$/src/service/CoordinatorMessage.java" />
+        <option value="$PROJECT_DIR$/src/app/ScenarioEventsDelay.java" />
+        <option value="$PROJECT_DIR$/src/messenger/ProcessExecutor.java" />
+        <option value="$PROJECT_DIR$/src/service/CurrentCoordinator.java" />
+        <option value="$PROJECT_DIR$/src/service/RequestToCoordinatorMessage.java" />
+        <option value="$PROJECT_DIR$/src/service/ServiceAction.java" />
+        <option value="$PROJECT_DIR$/src/messenger/Messenger.java" />
         <option value="$PROJECT_DIR$/src/service/Service.java" />
+        <option value="$PROJECT_DIR$/src/app/ScenarioEventsPeriod.java" />
         <option value="$PROJECT_DIR$/src/app/Main.java" />
       </list>
     </option>
@@ -214,7 +321,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="SearchEverywhereHistoryKey" value="Timeout&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/TimeoutHandler.java&#10;Time&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Timeout.java&#10;Timeo&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/TimeoutHandler.java&#10;Messenger&#9;PSI&#9;JAVA://messenger.Messenger&#10;repl&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Reply.java&#10;Process&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/ProcessesHandler.java&#10;main&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/app/Main.java&#10;ProcessEx&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/ProcessExecutor.java&#10;Service&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/service/ServiceKey.java&#10;ServiceKe&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/service/ServiceKey.java&#10;Messen&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Messenger.java&#10;Mess&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Message.java&#10;Message&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Message.java&#10;Processex&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/ProcessExecutor.java" />
+    <property name="SearchEverywhereHistoryKey" value="Messeng&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Messenger.java&#10;Timeout&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/TimeoutHandler.java&#10;Time&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Timeout.java&#10;Timeo&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/TimeoutHandler.java&#10;Messenger&#9;PSI&#9;JAVA://messenger.Messenger&#10;repl&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Reply.java&#10;Process&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/ProcessesHandler.java&#10;main&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/app/Main.java&#10;ProcessEx&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/ProcessExecutor.java&#10;Service&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/service/ServiceKey.java&#10;ServiceKe&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/service/ServiceKey.java&#10;Messen&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Messenger.java&#10;Mess&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Message.java&#10;Message&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/Message.java&#10;Processex&#9;FILE&#9;file://C:/Users/adrin/Documents/Faculdade/Sistemas Distribuídos/anel_logico/src/messenger/ProcessExecutor.java" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -353,22 +460,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-389" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4978678" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5490405" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28177083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -381,7 +488,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -437,34 +543,13 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/messenger/Payload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/messenger/Process.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/messenger/MessageType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/messenger/Messenger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
           <folding>
-            <element signature="e#1414#1415#0" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1540#1541#0" expanded="true" />
+            <element signature="e#1575#1576#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -502,8 +587,8 @@
             <element signature="e#409#410#0" expanded="false" />
             <element signature="e#450#451#0" expanded="false" />
             <element signature="e#489#490#0" expanded="false" />
-            <element signature="e#1594#1595#0" expanded="false" />
-            <element signature="e#1624#1625#0" expanded="false" />
+            <element signature="e#1626#1627#0" expanded="false" />
+            <element signature="e#1656#1657#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -542,8 +627,8 @@
         <state relative-caret-position="138">
           <caret line="6" column="71" lean-forward="false" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
           <folding>
-            <element signature="e#1414#1415#0" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1540#1541#0" expanded="true" />
+            <element signature="e#1575#1576#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -560,8 +645,8 @@
         <state relative-caret-position="92">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="e#1414#1415#0" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1540#1541#0" expanded="true" />
+            <element signature="e#1575#1576#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -618,21 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/messenger/ProcessContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="18" />
-          <folding>
-            <element signature="e#207#208#0" expanded="false" />
-            <element signature="e#252#253#0" expanded="false" />
-            <element signature="e#293#294#0" expanded="false" />
-            <element signature="e#336#337#0" expanded="false" />
-            <element signature="e#377#378#0" expanded="false" />
-            <element signature="e#416#417#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -727,44 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/messenger/ProcessExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="71" lean-forward="false" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#347#348#0" expanded="false" />
-            <element signature="e#409#410#0" expanded="false" />
-            <element signature="e#450#451#0" expanded="false" />
-            <element signature="e#489#490#0" expanded="false" />
-            <element signature="e#1594#1595#0" expanded="false" />
-            <element signature="e#1624#1625#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/messenger/Messenger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="989">
-          <caret line="43" column="26" lean-forward="false" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-          <folding>
-            <element signature="e#1414#1415#0" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/messenger/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-          <folding>
-            <element signature="e#502#503#0" expanded="true" />
-            <element signature="e#537#538#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/messenger/Timeout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -808,14 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/ServiceAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/service/ElectionMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -852,6 +876,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/messenger/ProcessExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/messenger/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/util/TreeMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="1323" column="0" lean-forward="false" selection-start-line="1323" selection-start-column="0" selection-end-line="1323" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/service/CoordinatorActionMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -866,44 +914,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/ScenarioEventsDelay.java">
+    <entry file="file://$PROJECT_DIR$/src/service/RequestToCoordinatorMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/ServiceAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/CurrentCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="e#233#234#0" expanded="true" />
-            <element signature="e#269#270#0" expanded="true" />
-            <element signature="e#299#300#0" expanded="true" />
-            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/Service.java">
+    <entry file="file://$PROJECT_DIR$/src/messenger/ProcessContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="190" column="40" lean-forward="false" selection-start-line="190" selection-start-column="40" selection-end-line="190" selection-end-column="40" />
+        <state relative-caret-position="92">
+          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/messenger/Messenger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#756#757#0" expanded="true" />
-            <element signature="e#1869#1870#0" expanded="true" />
-            <element signature="e#1924#1925#0" expanded="true" />
-            <element signature="e#5311#5332#0" expanded="true" />
-            <element signature="e#5688#5689#0" expanded="true" />
-            <element signature="e#5724#5725#0" expanded="true" />
-            <element signature="e#7026#7027#0" expanded="true" />
-            <element signature="e#7081#7082#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#1540#1541#0" expanded="true" />
+            <element signature="e#1575#1576#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/ScenarioEventsPeriod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+        <state relative-caret-position="276">
+          <caret line="42" column="83" lean-forward="false" selection-start-line="42" selection-start-column="83" selection-end-line="42" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1028#1157#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#2161#2162#0" expanded="true" />
+            <element signature="e#2222#2223#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/Service.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="151" column="0" lean-forward="false" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#756#757#0" expanded="true" />
+            <element signature="e#1961#1962#0" expanded="true" />
+            <element signature="e#2016#2017#0" expanded="true" />
+            <element signature="e#5443#5464#0" expanded="true" />
+            <element signature="e#5820#5821#0" expanded="true" />
+            <element signature="e#5856#5857#0" expanded="true" />
+            <element signature="e#7613#7614#0" expanded="true" />
+            <element signature="e#7668#7669#0" expanded="true" />
           </folding>
         </state>
       </provider>

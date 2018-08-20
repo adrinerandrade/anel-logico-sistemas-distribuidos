@@ -6,8 +6,8 @@ public class Messenger {
 
     private static boolean log;
 
-    public static void send(Message message) {
-        message.setSourceProcessId(ProcessContext.getCurrentProcess());
+    public static void sendFrom(String sourceProcessId, Message message) {
+        message.setSourceProcessId(sourceProcessId);
         ProcessExecutor process = ProcessesHandler.getProcessExecutor(message.getTargetProcessId());
         if (process != null) {
             if (log) {
@@ -17,6 +17,10 @@ public class Messenger {
         } else {
             System.err.print(String.format("Message not send. Reason: Process '%s' not found.", message.getTargetProcessId()));
         }
+    }
+
+    public static void send(Message message) {
+        sendFrom(ProcessContext.getCurrentProcess(), message);
     }
 
     public static void broadcast(Message message) {

@@ -37,7 +37,10 @@ public class Service implements Process {
         payload.put(NewProcessMessage.RANK, this.rank);
         Message message = new Message(payload);
         message.addHeader(ACTION_HEADER, ServiceAction.NEW_PROCESS);
-        timeoutHandler.waitForResponse(message).onTimeout(() -> this.coordinator = this.id);
+        timeoutHandler.waitForResponse(message).onTimeout(() -> {
+            this.coordinator = this.id;
+            CurrentCoordinator.setCoordinatorId(this.coordinator);
+        });
         Messenger.broadcast(message);
     }
 
@@ -91,7 +94,7 @@ public class Service implements Process {
             Message message = new Message(coordinator, new Payload());
             message.addHeader(ACTION_HEADER, ServiceAction.COORDINATOR_ACTION);
             timeoutHandler.waitForResponse(message).onTimeout(this::startElection);
-            Messenger.send(message);
+            Messenger.sendFrom(id, message);
         }
     }
 
@@ -102,7 +105,8 @@ public class Service implements Process {
     }
 
     void handleCoordinatorActionResponse(Message message) {
-        System.out.println(String.format("Status do coordenador: %s.", message.getPayload().get(CoordinatorActionMessage.STATUS)));
+        String status = message.getPayload().get(CoordinatorActionMessage.STATUS);
+        System.out.println(String.format("Status do coordenador: %s.", status));
     }
 
     private void startElection() {
@@ -166,14 +170,20 @@ public class Service implements Process {
     }
 
     private void coordinatorAction(LinkedList<Integer> pids) {
-        executeIfHasSuccessor(successor -> pids
-                .stream()
-                .min(Comparator.reverseOrder())
-                .ifPresent(higherPid -> {
-                    this.isOnElection = false;
-                    this.coordinator = getProcessName(higherPid);
-                })
-        );
+        executeIfHasSuccessor(successor -> {
+            pids.stream()
+                    .min(Comparator.reverseOrder())
+                    .ifPresent(higherPid -> {
+                        this.isOnElection = false;
+                        this.coordinator = getProcessName(higherPid);
+                        CurrentCoordinator.setCoordinatorId(this.coordinator);
+                    });
+            Payload payload = new Payload();
+            payload.put(CoordinatorMessage.PIDS, pids);
+            Message message = new Message(successor.getServiceId(), payload);
+            message.addHeader(ACTION_HEADER, ServiceAction.COORDINATOR);
+            Messenger.send(message);
+        });
     }
 
     private void executeIfHasSuccessor(Consumer<ServiceKey> runnable) {
@@ -184,10 +194,11 @@ public class Service implements Process {
             System.out.println("Nenhum sucessor encontrado!");
             this.isOnElection = false;
             this.coordinator = id;
+            CurrentCoordinator.setCoordinatorId(this.coordinator);
         }
     }
 
-    public Optional<ServiceKey> getSuccessor() {
+    private Optional<ServiceKey> getSuccessor() {
         return Optional.ofNullable(Optional.ofNullable(allServices.higher(new ServiceKey(id, rank)))
                 .orElse(allServices.first()));
     }
