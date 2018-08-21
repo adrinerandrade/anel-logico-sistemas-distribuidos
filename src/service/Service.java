@@ -3,10 +3,7 @@ package service;
 import messenger.*;
 import messenger.Process;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.Optional;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class Service implements Process {
@@ -19,6 +16,7 @@ public class Service implements Process {
     private final int rank;
     private final String id;
     private String coordinator;
+    private boolean alive = true;
 
     public Service() {
         this.rank = ServiceIdProvider.newId();
@@ -88,11 +86,10 @@ public class Service implements Process {
 
     public void messageToCoordinator() {
         if (coordinator == null) {
-            System.out.print(String.format("\nProcess '%s' waiting setup for send message to coordinator.", getId()));
-            while (coordinator == null) {
-            }
-            System.out.print(String.format("\nProcess '%s' ready.", getId()));
+            System.out.print(String.format("\nProcess '%s' not ready yet to send message to coordinator.", getId()));
+            return;
         }
+
         Message message = new Message(coordinator, new Payload());
         message.addHeader(ACTION_HEADER, ServiceAction.COORDINATOR_ACTION);
         timeoutHandler.waitForResponse(message).onTimeout(this::startElection);
@@ -111,8 +108,10 @@ public class Service implements Process {
     }
 
     private void startElection() {
-        System.out.print(String.format("\nElection started by process %s.", id));
-        electionAction(new LinkedList<>());
+        if (alive) {
+            System.out.print(String.format("\nElection started by process %s.", id));
+            electionAction(new LinkedList<>());
+        }
     }
 
     void handleElectionRequest(Message message) {
@@ -189,7 +188,14 @@ public class Service implements Process {
 
     private Optional<ServiceKey> getSuccessor() {
         return Optional.ofNullable(Optional.ofNullable(allServices.higher(new ServiceKey(id, rank)))
-                .orElse(allServices.first()));
+                .orElseGet(() -> {
+                    try {
+                        return allServices.first();
+                    }catch (NoSuchElementException e) {
+                        return null;
+                    }
+                })
+        );
     }
 
     private String getProcessName(int pid) {
@@ -204,6 +210,7 @@ public class Service implements Process {
     public void onKill() {
         timeoutHandler.clearALl();
         timeoutHandler = null;
+        alive = false;
     }
 
 }
