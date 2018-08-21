@@ -4,10 +4,12 @@ import java.util.*;
 
 public class Timeout {
 
+    private Process process;
     private Timer timer = new Timer();
     private Queue<Runnable> onTimeout = new LinkedList<>();
 
-    Timeout(int milliseconds) {
+    Timeout(Process process, int milliseconds) {
+        this.process = process;
         timer.schedule(new TimerTask() {
 
             @Override
@@ -19,7 +21,10 @@ public class Timeout {
     }
 
     public Timeout onTimeout(Runnable runnable) {
-        onTimeout.add(runnable);
+        onTimeout.add(() -> {
+            ProcessContext.setCurrentProcess(this.process.getId());
+            runnable.run();
+        });
         return this;
     }
 

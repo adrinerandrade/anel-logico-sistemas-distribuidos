@@ -13,13 +13,12 @@ public class Service implements Process {
 
     private static final String ACTION_HEADER = "action";
 
-    private TimeoutHandler timeoutHandler = new TimeoutHandler();
+    private TimeoutHandler timeoutHandler = new TimeoutHandler(this);
     private TreeSet<ServiceKey> allServices = new TreeSet<>();
 
     private final int rank;
     private final String id;
     private String coordinator;
-    private boolean isOnElection;
 
     public Service() {
         this.rank = ServiceIdProvider.newId();
@@ -58,7 +57,7 @@ public class Service implements Process {
                 handler.getResponseExecutor(this).accept(message);
                 break;
             default:
-                System.out.println(String.format("Message type no defined: %s.", type));
+                System.out.print(String.format("\nMessage type no defined: %s.", type));
                 break;
         }
     }
@@ -89,13 +88,15 @@ public class Service implements Process {
 
     public void messageToCoordinator() {
         if (coordinator == null) {
-            startElection();
-        } else {
-            Message message = new Message(coordinator, new Payload());
-            message.addHeader(ACTION_HEADER, ServiceAction.COORDINATOR_ACTION);
-            timeoutHandler.waitForResponse(message).onTimeout(this::startElection);
-            Messenger.sendFrom(id, message);
+            System.out.print(String.format("\nProcess '%s' waiting setup for send message to coordinator.", getId()));
+            while (coordinator == null) {
+            }
+            System.out.print(String.format("\nProcess '%s' ready.", getId()));
         }
+        Message message = new Message(coordinator, new Payload());
+        message.addHeader(ACTION_HEADER, ServiceAction.COORDINATOR_ACTION);
+        timeoutHandler.waitForResponse(message).onTimeout(this::startElection);
+        Messenger.sendFrom(id, message);
     }
 
     void handleCoordinatorActionRequest(Message message) {
@@ -106,67 +107,52 @@ public class Service implements Process {
 
     void handleCoordinatorActionResponse(Message message) {
         String status = message.getPayload().get(CoordinatorActionMessage.STATUS);
-        System.out.println(String.format("Status do coordenador: %s.", status));
+        System.out.print(String.format("\nCoordinator status: %s.", status));
     }
 
     private void startElection() {
-        System.out.println(String.format("Eleição iniciada pelo processo %s.", id));
+        System.out.print(String.format("\nElection started by process %s.", id));
         electionAction(new LinkedList<>());
     }
 
     void handleElectionRequest(Message message) {
         LinkedList<Integer> pids = message.getPayload().get(ElectionMessage.PIDS);
-        if (!isOnElection) {
-            if (pids.getFirst().equals(rank)) {
-                coordinatorAction(pids);
-            } else {
-                electionAction(pids);
-            }
+        if (pids.contains(rank)) {
+            coordinatorAction(pids);
+        } else {
+            electionAction(pids);
         }
 
-        Payload payload = new Payload();
-        payload.put(ElectionMessage.ALREADY_ON_ELECTION, isOnElection);
-        Messenger.send(new Reply(message).withPayload(payload));
+        Messenger.send(new Reply(message).withoutPayload());
     }
 
     private void electionAction(LinkedList<Integer> pids) {
         executeIfHasSuccessor(successor -> {
-            pids.add(rank);
+            if (!pids.contains(rank)) {
+                pids.add(rank);
+            }
             Payload payload = new Payload();
             payload.put(ElectionMessage.PIDS, pids);
             Message message = new Message(successor.getServiceId(), payload);
             message.addHeader(ACTION_HEADER, ServiceAction.ELECTION);
             timeoutHandler.waitForResponse(message).onTimeout(() -> {
-                System.out.println(String.format("Sucessor '%s' inativo.", successor.getServiceId()));
+                System.out.print(String.format("\nSuccessor '%s' of '%s' inactive.", successor.getServiceId(), getId()));
                 allServices.remove(successor);
                 electionAction(pids);
             });
-            isOnElection = true;
             Messenger.send(message);
         });
     }
 
     void handleElectionResponse(Message message) {
-        Payload response = message.getPayload();
-        if (response.get(ElectionMessage.ALREADY_ON_ELECTION)) {
-            response.<LinkedList<Integer>>get(ElectionMessage.PIDS).forEach(pid -> {
-                Message cancelElectionMessage = new Message(getProcessName(pid), new Payload());
-                message.addHeader(ACTION_HEADER, ServiceAction.CANCEL_ELECTION);
-                Messenger.send(cancelElectionMessage);
-            });
-        }
-    }
-
-    void handleCancelElection(Message message) {
-        isOnElection = false;
     }
 
     void handleCoordinatorRequest(Message message) {
-        isOnElection = false;
         LinkedList<Integer> pids = message.getPayload().get(CoordinatorMessage.PIDS);
         if (!pids.getFirst().equals(rank)) {
             coordinatorAction(pids);
         }
+        Messenger.send(new Reply(message).withoutPayload());
     }
 
     private void coordinatorAction(LinkedList<Integer> pids) {
@@ -174,7 +160,6 @@ public class Service implements Process {
             pids.stream()
                     .min(Comparator.reverseOrder())
                     .ifPresent(higherPid -> {
-                        this.isOnElection = false;
                         this.coordinator = getProcessName(higherPid);
                         CurrentCoordinator.setCoordinatorId(this.coordinator);
                     });
@@ -182,6 +167,11 @@ public class Service implements Process {
             payload.put(CoordinatorMessage.PIDS, pids);
             Message message = new Message(successor.getServiceId(), payload);
             message.addHeader(ACTION_HEADER, ServiceAction.COORDINATOR);
+            timeoutHandler.waitForResponse(message).onTimeout(() -> {
+                System.out.print(String.format("\nSuccessor '%s' of '%s' inactive.", successor.getServiceId(), getId()));
+                allServices.remove(successor);
+                coordinatorAction(pids);
+            });
             Messenger.send(message);
         });
     }
@@ -191,8 +181,7 @@ public class Service implements Process {
         if (optionalSuccessor.isPresent()) {
             runnable.accept(optionalSuccessor.get());
         } else {
-            System.out.println("Nenhum sucessor encontrado!");
-            this.isOnElection = false;
+            System.out.print("\nNo successor found!");
             this.coordinator = id;
             CurrentCoordinator.setCoordinatorId(this.coordinator);
         }
@@ -209,7 +198,12 @@ public class Service implements Process {
 
     private void mapNewProcess(String sourceProcessId, int rank) {
         allServices.add(new ServiceKey(sourceProcessId, rank));
-        System.out.println(String.format("All process for %s: %s", id, allServices));
+        System.out.print(String.format("\nAll mapped processes for %s: %s", id, allServices));
+    }
+
+    public void onKill() {
+        timeoutHandler.clearALl();
+        timeoutHandler = null;
     }
 
 }

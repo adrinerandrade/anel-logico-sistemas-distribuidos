@@ -5,7 +5,6 @@ public enum ServiceAction {
     NEW_PROCESS(new NewProcessMessage()),
     COORDINATOR_ACTION(new CoordinatorActionMessage()),
     ELECTION(new ElectionMessage()),
-    CANCEL_ELECTION(new CancelElectionMessage()),
     COORDINATOR(new CoordinatorMessage());
 
     private ServiceMessage serviceMessage;

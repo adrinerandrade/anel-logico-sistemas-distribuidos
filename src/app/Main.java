@@ -6,10 +6,11 @@ import service.CurrentCoordinator;
 import service.Service;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
 
-    private static Map<String, Service> services = new HashMap<>();
+    private static Map<String, Service> services = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
         Messenger.log(true);
@@ -33,27 +34,47 @@ public class Main {
     private static void newProcess() {
         Service service = new Service();
         ProcessesHandler.newProcess(service);
+        System.out.print(String.format("\nNEW PROCESS: %s\n", service.getId()));
         services.put(service.getId(), service);
-        System.out.println("NOVO PROCESSO: " + service.getId());
+        System.out.print(String.format("\nCURRENT PROCESSES: %s", services.keySet()));
     }
 
-    private static void killProcess(Service process) {
-        ProcessesHandler.killProcess(process.getId());
-        services.remove(process.getId());
-        System.out.println(String.format("Processo %s eliminado!", process.getId()));
+    private static void killCoordinator() {
+        Optional<Service> coordinatorOptional = getCoordinator();
+        if (!coordinatorOptional.isPresent()) {
+            System.out.print(String.format("\nCOORDINATOR NOT MAPPED %s\n", CurrentCoordinator.getCoordinatorId()));
+        }
+
+        coordinatorOptional.ifPresent(coordinator -> {
+            Main.killProcess(coordinator, false);
+            System.out.print(String.format("\nCOORDINADOR '%s' ELIMINATED!\n", coordinator.getId()));
+        });
     }
 
     private static Optional<Service> getCoordinator() {
         return Optional.ofNullable(services.get(CurrentCoordinator.getCoordinatorId()));
     }
 
-    private static void killCoordinator() {
-        getCoordinator().ifPresent(Main::killProcess);
-        System.out.println("Coordenador eliminado!");
+    private static void killProcess(Service process) {
+        killProcess(process, true);
+    }
+
+    private static void killProcess(Service process, boolean log) {
+        ProcessesHandler.killProcess(process.getId());
+        services.remove(process.getId());
+        process.onKill();
+        if (log) {
+            System.out.println(String.format("\nPROCESS '%s' ELIMINATED!\n", process.getId()));
+        }
+        System.out.println(String.format("\nCURRENT PROCESSES: %s", services.keySet()));
     }
 
     private static Optional<Service> findAnyService() {
-        return services.keySet().stream().findAny().map(services::get);
+        return services.keySet()
+                .stream()
+                .filter(key -> !key.equals(CurrentCoordinator.getCoordinatorId()))
+                .findAny()
+                .map(services::get);
     }
 
     private static void killAnyService() {
