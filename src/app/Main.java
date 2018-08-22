@@ -8,6 +8,10 @@ import service.Service;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * @author Adriner Maranho de Andrade
+ * @author Luan Carlos Purin
+ */
 public class Main {
 
     private static Map<String, Service> services = new ConcurrentHashMap<>();
